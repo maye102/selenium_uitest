@@ -71,9 +71,5 @@ class ISelenium(unittest.TestCase):
 
         time.sleep(3)
         result = f'{search_keyword}' in self.driver.title
-        self.assertTrue(result, msg=f'{testcase_name}校验点 pass')
+        self.assertTrue(result, msg=f'{testcase_name}校验点 fail')
 
-        if result:
-            print(f'搜索关键词{search_keyword}: Pass')
-        else:
-            print(f'搜索关键词{search_keyword}: Fail')
