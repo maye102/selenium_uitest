@@ -11,17 +11,11 @@ from selenium.webdriver.chrome.options import Options
 
 @allure.feature('Test Baidu WebUI')
 class ISelenium(unittest.TestCase):
-    # 读入配置文件
-    def get_config(self):
-        config = configparser.ConfigParser()
-        config.read(os.path.join(os.path.dirname(os.path.abspath(".")),'iselenium.ini'))
-        return config
 
     def tearDown(self):
         self.driver.quit()
 
     def setUp(self):
-        config = self.get_config()
 
         # 控制是否采用无界面形式运行自动化测试
         try:
@@ -34,9 +28,7 @@ class ISelenium(unittest.TestCase):
         if using_headless is not None and using_headless.lower() == 'true':
             print('使用无界面方式运行')
             chrome_options.add_argument("--headless")
-        print(config.get('driver', 'chrome_driver'))
-        self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'),
-                                           options=chrome_options)
+        self.driver = webdriver.Chrome(executable_path="D:\chromedirver\chromedriver.exe",options=chrome_options)
 
 
     @allure.story('Test key word 今日头条')
